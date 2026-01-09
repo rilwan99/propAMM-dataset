@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 import json
 import time
 import requests
@@ -43,7 +44,10 @@ def get_top100_path():
 VALIDATOR_IDS = extract_validator_ids(get_top100_path(), 21, 100)
 
 API_URL = "https://www.validators.app/api/v1/validators/mainnet/{}.json"
-API_TOKEN = "X5mumz1h8sk6o5tJkR428iD6"
+load_dotenv()
+API_TOKEN = os.environ.get("API_TOKEN")
+if not API_TOKEN:
+    raise RuntimeError("API_TOKEN not set. Please define it in your .env file.")
 HEADERS = {"Token": API_TOKEN}
 OUTPUT_DIR = "outputs"
 LOG_FILE = os.path.join(OUTPUT_DIR, "fetch_log.txt")
