@@ -1,0 +1,120 @@
+# Top 100 Validators by Slots/Blocks Processed
+# Generated: 2026-01-09 11:20:25
+# Source: pamm_updates_391876700_391976700.parquet
+# Block range: 391876700-391976700 (~100,000 blocks)
+# Total validators in dataset: 742
+#==============================================================================
+
+Rank   Validator ID                                  Unique Slots    Total Events   
+-------------------------------------------------------------------------------------
+1      HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU          3,778        210,865
+2      DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy          3,194        198,111
+3      Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk          3,062        148,082
+4      JupmVLmA8RoyTUbTMMuTtoPWHEiNQobxgTeGTrPNkzT           2,900        136,499
+5      q9XWcZ7T1wP4bW9SB4XgNNwjnFEJ982nE8aVbbNuwot           1,992        118,707
+6      5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm          1,768        115,421
+7      DtdSSG8ZJRZVv5Jx7K1MeWp7Zxcu19GD5wQRGRpQ9uMF          1,721        100,212
+8      JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB          1,640         95,313
+9      EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4          1,518         74,759
+10     Awes4Tr6TX8JDzEhCZY2QVNimT6iD1zWHzf1vNyGvpLM          1,440         82,568
+11     9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP          1,391         83,601
+12     CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4          1,264         71,992
+13     E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL          1,196         64,935
+14     9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ          1,104         68,840
+15     9UM8wQ8F5oMiRcP5YdqD6Lr4krpBWCD8LtgQYoisJd9i          1,039         61,927
+16     BkoS26vBuaXnSowACdChi4WKid8UwmuPNhEJWa8KsLHd            968         58,317
+17     5ZqveVffQPiUbkjBg4KD9kib1MKHLqiFno4ke9jSq9qk            944         53,299
+18     ChorusmmK7i1AxXeiTtQgQZhQNiXYU84ULeaYF1EH15n            944         62,816
+19     5Cchr1XGEg7dbBXByV5NY2ad8jfxAM7HA3x8D56rq9Ux            915         51,917
+20     BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH            860         54,209
+21     EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f            856         48,670
+22     DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf            835         48,418
+23     9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7            820         48,666
+24     J6etcxDdYjPHrtyvDXrbCkx3q9W1UjMj1vy1jBFPJEbK            812         56,014
+25     DWvDTSh3qfn88UoQTEKRV2JnLt5jtJAVoiCo3ivtMwXP            800         45,198
+26     5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC            799         44,772
+27     A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4            792         44,325
+28     GoeW4aFK4dGoekJySgUynWDxBZiQJqm8GDAF4H53tDK9            792         49,049
+29     Hz5aLvpKScNWoe9YZWxBLrQA3qzHJivBGtfciMekk8m5            779         44,136
+30     FBKFWadXZJahGtFitAsBvbqh5968gLY7dMBBJUoUjeNi            775         38,949
+31     shftkxnsXmqAkmLgz9Mn7bNB5Fr6mKgFc58kFHfVikj             757         47,808
+32     6y7V8dL673XFzm9QyC5vvh3itWkp7wztahBd2yDqsyrK            666         39,034
+33     5ejbTALcBsKQ7Cj1iSuu2mY5jqbYHqh9gF5ERXLiYj1z            644         35,598
+34     Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD            640         34,423
+35     Aw5wEMXhbygFLR7jHtHpih8QvxVBGAMTqsQ2SjWPk1ex            631         35,889
+36     krakeNd6ednDPEXxHAmoBs1qKVM8kLg79PvWF2mhXV1             627         36,990
+37     GQzMeEMwAR44ugoNCifTb5NdRKos1GduDUPeNh6AgV46            624         37,667
+38     BSVckjdW2f8kcXPGcrPPtV9kUDBZ8w8PjrrGVnxgEdwq            616         36,991
+39     CW9C7HBwAMgqNdXkNgFg9Ujr3edR2Ab9ymEuQnVacd1A            608         32,414
+40     FNKgX9dYUhYQFRTM9bkeKoRpsyEtZGNMxbdQLDzfqB8a            594         31,635
+41     3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd            588         32,878
+42     2GUnfxZavKoPfS9s3VSEjaWDzB3vNf5RojUhprCS1rSx            588         36,968
+43     DUND26mEDfFeaPsVof3YvbXDRvpuQX7HMUJrLgEWzYw4            580         36,401
+44     GSTampk6BJRKSDkzhaMM49R7qRx98MTPYYWvKbp83XKc            560         31,780
+45     HpcB5Qg8Y9E73dUkot5e8HkgAJbExsYeUzniY4bCuKac            560         33,746
+46     76rcGHdPvgs8G1XrzCXUTWtwgT59AFDvpB4VbTS2TBBJ            531         29,220
+47     22rU5yUmdVThrkoPieVNphqEyAtMQKmZxjwcD8v4bJDU            528         30,735
+48     AWcCdYG7Dy6GX45c6QMPbgGwgRZPKcBDT4bXGb3QrVRV            524         28,779
+49     7cVfgArCheMR6Cs4t6vz5rfnqd56vZq4ndaBrY5xkxXy            519         24,827
+50     DTSUkYHd2e9P2HLyZfbLarsbDdPhQUhZnWjRYuJZQRC8            488         27,266
+51     AEHqTB2RtJjegsR2ePjvoJSm6AA5pnYKWVbcsn6kqTBD            484         27,001
+52     FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k            472         28,918
+53     BUv44cVtsdvU9z2BfFGk6s5JZZWrmVnq5qCaii5ARyyB            468         26,582
+54     CG4tRANBKrzUmpv93V5sgftjQznBdiJsc2yPCzZWWuS9            463         26,353
+55     HnfPZDrbJFooiP9vvgWrjx3baXVNAZCgisT58gyMCgML            448         26,300
+56     DrifTrN923QaouP89UxkQzFGbumKPCnfkNYQRwmZxatz            436         25,399
+57     3JotfSFPaod4KVK7nj7ULvcq5PjUBdZNVGracNkJNhrt            428         23,778
+58     2m1A2WM1vte7RWz5xTTw4i1SiXmngVtXhqFERaUjoAAb            428         24,585
+59     HbidP4hpQdwhkzrxder3x3VNPt6DQnE25gFG46napD2p            424         24,493
+60     Ninja1spj6n9t5hVYgF3PdnYz2PLnkt7rvaw3firmjs             412         21,445
+61     7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE            404         23,553
+62     9n1eEtJJfj1535NYfx524QcCG5aHbf5DH7ejqBrFLBwG            400         26,594
+63     FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS            400         22,471
+64     CfgRXmp1LEYr97EaT2RyoL2cSvtWgJh52Bes89RxVSoW            396         20,105
+65     CoG8d9Fp2TFJRkAmrPMiPsGhQWHzdTTVoegEp9svRgmJ            396         21,756
+66     7y5VhV4fkz6r4zUmH2UiwPjLwXzPL1PcV28or5NWkWRL            356         20,717
+67     G3a3iYZKNLbivothF3twqcaTCEvoPb9uJ2bFc9DNKkBQ            351         24,524
+68     FZ4MT1HYJHd9GK8D5mJ9f3r7irLaDL5NxBNLjGqrLqs9            348         22,327
+69     DZVqmD4QqSWM2gUyEXdQhvt4u3NZtCRxdsn2n2nNiBRL            348         16,948
+70     C1ocKDYMCm2ooWptMMnpd5VEB2Nx4UMJgRuYofysyzcA            325         15,474
+71     privaEdSEmnMPGPoQACUkcDGkFBbTArVvsEGd7C5wUM             324         18,250
+72     ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY             324         20,034
+73     GmCxjmjKZoaKN1DKunbYq8RCYib94Nm3sHyncFfofaF5            316         18,356
+74     6WgdYhhGE53WrZ7ywJA15hBVkw7CRbQ8yDBBTwmBtAHN            312         16,517
+75     722RdWmHC5TGXBjTejzNjbc8xEiduVDLqZvoUGz6Xzbp            312         20,115
+76     EXckihF3qmguH5znjhfzLvHsbk2E3nEW2DqNh4MMnDMm            311         17,368
+77     HLnodbYkL5PFA8hjAZDkm5pGzV7eLTvcs671AW2L6St9            300         16,874
+78     AMukCLCr52XxsEjXoDxKKxjNg4FpnsReXNaQx8aR6DJF            296         18,064
+79     G2TBEh2ahNGS9tGnuBNyDduNjyfUtGhMcssgRb8b6KfH            291         17,525
+80     CMPSSdrTnRQBiBGTyFpdCc3VMNuLWYWaSkE8Zh5z6gbd            288         16,408
+81     6aDs9tUm2gErcPn2c1TZnp5cu2bQV9BzyuwW4baWQYd4            288         14,189
+82     CwyVpfmfSiMeCexi3JgUNvaiDfYN14cLDjzT99zcBuD2            288         18,170
+83     5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS            276         15,088
+84     A9mvukTd77EbRoBX4ydSCFQHdu5bsRFkNXTTRstA8FAC            272         14,613
+85     pSoLoZx55zZz61gjxSTwHtwTg4yTwdm7ruBmyjbYgT2             272         10,619
+86     VQwCCSfW3o5NDx7n5FBr9SoYiLXVgetstHvaWBvv2YH             260         12,149
+87     84gC25fbFKYueR9WEfreUysk1n3ZFxLFDDjbyqeqGpoW            259         12,688
+88     rubyWZkfnjG716rx69n2oCAhevVZaMRQunir9VQcY2E             256         14,381
+89     PUmpKiNnSVAZ3w4KaFX6jKSjXUNHFShGkXbERo54xjb             252         13,598
+90     6TkKqq15wXjqEjNg9zqTKADwuVATR9dW3rkNnsYme1ea            248         12,547
+91     5TGfVQV1S3wHE9hkgGaQkRoPC7xZxiqwMcjQZxVYsf1j            248         14,388
+92     8tjFeSApQ85ThoQXT28acfF2KUfQr3TvTdirSkzNnYC7            244         15,351
+93     DZv25oNCWFvGXu9tH63BiAXvG94syweGZhbvdN3HxDxT            244         16,094
+94     8uJiHDJ1b7UDQ4KFsQGJXK9nUCkokdKRJymg1Wy9nxvM            240         14,813
+95     DZVySotZvrvJyVAcgjFtUDm93zoCaq9wBruMAUz83CWW            239          8,614
+96     GYx8kpp7SsRwtQEEsGQjAxb4hFMMmT91kFJuDeky3YGQ            228         12,398
+97     CXPeim1wQMkcTvEHx9QdhgKREYYJD8bnaCCqPRwJ1to1            224         11,405
+98     XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr             220         12,252
+99     BXAxLMMMUNYfC1z166VjWHR3WjTmqzLxB837o5ghmRtH            212         13,867
+100    3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW            209          9,466
+
+=====================================================================================
+SUMMARY STATISTICS
+=====================================================================================
+Total unique validators: 742
+Total unique slots in dataset: 97,663
+Total events in dataset: 5,526,137
+
+Top 100 validators represent:
+  • 69,811 slots (71.5% of total)
+  • 3,977,160 events (72.0% of total)

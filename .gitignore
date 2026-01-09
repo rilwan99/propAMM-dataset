@@ -7,6 +7,7 @@ __pycache__/
 venv/
 env/
 ENV/
+outputs/
 
 # Data files (large parquet datasets)
 *.parquet

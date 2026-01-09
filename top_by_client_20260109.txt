@@ -1,0 +1,37 @@
+=== Top 20 Validators for Jito-solana ===
+Rank  Validator ID                                      Slots     Events
+---------------------------------------------------------------------------
+1     22rU5yUmdVThrkoPieVNphqEyAtMQKmZxjwcD8v4bJDU          -          -
+2     2GUnfxZavKoPfS9s3VSEjaWDzB3vNf5RojUhprCS1rSx          -          -
+3     3JotfSFPaod4KVK7nj7ULvcq5PjUBdZNVGracNkJNhrt          -          -
+4     3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd          -          -
+5     5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC          -          -
+6     5ZqveVffQPiUbkjBg4KD9kib1MKHLqiFno4ke9jSq9qk          -          -
+7     5ejbTALcBsKQ7Cj1iSuu2mY5jqbYHqh9gF5ERXLiYj1z          -          -
+8     5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm          -          -
+9     6y7V8dL673XFzm9QyC5vvh3itWkp7wztahBd2yDqsyrK          -          -
+10    76rcGHdPvgs8G1XrzCXUTWtwgT59AFDvpB4VbTS2TBBJ          -          -
+11    9UM8wQ8F5oMiRcP5YdqD6Lr4krpBWCD8LtgQYoisJd9i          -          -
+12    9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7          -          -
+13    9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ          -          -
+14    A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4          -          -
+15    AEHqTB2RtJjegsR2ePjvoJSm6AA5pnYKWVbcsn6kqTBD          -          -
+16    Aw5wEMXhbygFLR7jHtHpih8QvxVBGAMTqsQ2SjWPk1ex          -          -
+17    BSVckjdW2f8kcXPGcrPPtV9kUDBZ8w8PjrrGVnxgEdwq          -          -
+18    BUv44cVtsdvU9z2BfFGk6s5JZZWrmVnq5qCaii5ARyyB          -          -
+19    BkoS26vBuaXnSowACdChi4WKid8UwmuPNhEJWa8KsLHd          -          -
+20    BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH          -          -
+
+=== Top 10 Validators for Harmonic ===
+Rank  Validator ID                                      Slots     Events
+---------------------------------------------------------------------------
+1     2m1A2WM1vte7RWz5xTTw4i1SiXmngVtXhqFERaUjoAAb          -          -
+2     CW9C7HBwAMgqNdXkNgFg9Ujr3edR2Ab9ymEuQnVacd1A          -          -
+3     DTSUkYHd2e9P2HLyZfbLarsbDdPhQUhZnWjRYuJZQRC8          -          -
+4     FNKgX9dYUhYQFRTM9bkeKoRpsyEtZGNMxbdQLDzfqB8a          -          -
+5     3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW          -          -
+6     XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr           -          - 
+7     aXiomFkk6VzXaBhPuhMqTLZZguCFzzbyP9LTtZ7ZHLQ           -          -
+8     7tqeaFKsg2K9xKnQWe61w71AtCZVMQvG4hbFAiFAngYw          -          -
+9     9r2CsyjRTmTRtu8GFk5oJRSQr5YfSENxDkf3eox8iPLa          -          -
+10    8Nvaxzif1NrdvxNkRetjT8xJvd33EHkKVrfL8EDkgaNy          -          -
