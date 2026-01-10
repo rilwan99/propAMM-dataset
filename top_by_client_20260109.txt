@@ -1,26 +1,26 @@
 === Top 20 Validators for Jito-solana ===
 Rank  Validator ID                                      Slots     Events
 ---------------------------------------------------------------------------
-1     22rU5yUmdVThrkoPieVNphqEyAtMQKmZxjwcD8v4bJDU          -          -
-2     2GUnfxZavKoPfS9s3VSEjaWDzB3vNf5RojUhprCS1rSx          -          -
-3     3JotfSFPaod4KVK7nj7ULvcq5PjUBdZNVGracNkJNhrt          -          -
-4     3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd          -          -
-5     5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC          -          -
-6     5ZqveVffQPiUbkjBg4KD9kib1MKHLqiFno4ke9jSq9qk          -          -
-7     5ejbTALcBsKQ7Cj1iSuu2mY5jqbYHqh9gF5ERXLiYj1z          -          -
-8     5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm          -          -
-9     6y7V8dL673XFzm9QyC5vvh3itWkp7wztahBd2yDqsyrK          -          -
-10    76rcGHdPvgs8G1XrzCXUTWtwgT59AFDvpB4VbTS2TBBJ          -          -
-11    9UM8wQ8F5oMiRcP5YdqD6Lr4krpBWCD8LtgQYoisJd9i          -          -
-12    9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7          -          -
-13    9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ          -          -
-14    A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4          -          -
-15    AEHqTB2RtJjegsR2ePjvoJSm6AA5pnYKWVbcsn6kqTBD          -          -
-16    Aw5wEMXhbygFLR7jHtHpih8QvxVBGAMTqsQ2SjWPk1ex          -          -
-17    BSVckjdW2f8kcXPGcrPPtV9kUDBZ8w8PjrrGVnxgEdwq          -          -
-18    BUv44cVtsdvU9z2BfFGk6s5JZZWrmVnq5qCaii5ARyyB          -          -
-19    BkoS26vBuaXnSowACdChi4WKid8UwmuPNhEJWa8KsLHd          -          -
-20    BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH          -          -
+1     HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU      3,778    210,865
+2     DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy      3,194    198,111
+3     Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk      3,062    148,082
+4     JupmVLmA8RoyTUbTMMuTtoPWHEiNQobxgTeGTrPNkzT       2,900    136,499
+5     q9XWcZ7T1wP4bW9SB4XgNNwjnFEJ982nE8aVbbNuwot       1,992    118,707
+6     5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm      1,768    115,421
+7     CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4      1,264     71,992
+8     E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL      1,196     64,935
+9     9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ      1,104     68,840
+10    9UM8wQ8F5oMiRcP5YdqD6Lr4krpBWCD8LtgQYoisJd9i      1,039     61,927
+11    BkoS26vBuaXnSowACdChi4WKid8UwmuPNhEJWa8KsLHd        968     58,317
+12    5ZqveVffQPiUbkjBg4KD9kib1MKHLqiFno4ke9jSq9qk        944     53,299
+13    ChorusmmK7i1AxXeiTtQgQZhQNiXYU84ULeaYF1EH15n        944     62,816
+14    BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH        860     54,209
+15    EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f        856     48,670
+16    9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7        820     48,666
+17    J6etcxDdYjPHrtyvDXrbCkx3q9W1UjMj1vy1jBFPJEbK        812     56,014
+18    DWvDTSh3qfn88UoQTEKRV2JnLt5jtJAVoiCo3ivtMwXP        800     45,198
+19    5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC        799     44,772
+20    A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4        792     44,325
 
 === Top 10 Validators for Harmonic ===
 Rank  Validator ID                                      Slots     Events

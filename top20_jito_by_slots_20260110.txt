@@ -1,0 +1,36 @@
+====================================================================================================
+TOP 20 JITO-SOLANA VALIDATORS (BY SLOTS PROCESSED)
+Generated: 2026-01-10 09:02:23
+Source: top100_validators_by_slots.txt
+Criteria: software_client = 'JitoLabs' AND software_client_id = 1
+====================================================================================================
+
+Rank   Validator ID                                  Slots        Events       Name                          
+----------------------------------------------------------------------------------------------------
+1      HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU  3778         210865       Helius                        
+2      DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy  3194         198111       binance staking               
+3      Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk  3062         148082       Figment                       
+4      JupmVLmA8RoyTUbTMMuTtoPWHEiNQobxgTeGTrPNkzT   2900         136499       Jupiter                       
+5      q9XWcZ7T1wP4bW9SB4XgNNwjnFEJ982nE8aVbbNuwot   1992         118707       Ledger by Figment             
+6      5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm  1768         115421       Kiln1                         
+12     CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4  1264         71992        Kraken 2                      
+13     E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL  1196         64935        Bitwise Onchain Solutions     
+14     9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ  1104         68840        Unknown                       
+15     9UM8wQ8F5oMiRcP5YdqD6Lr4krpBWCD8LtgQYoisJd9i  1039         61927        Unknown                       
+16     BkoS26vBuaXnSowACdChi4WKid8UwmuPNhEJWa8KsLHd  968          58317        Unknown                       
+17     5ZqveVffQPiUbkjBg4KD9kib1MKHLqiFno4ke9jSq9qk  944          53299        Unknown                       
+18     ChorusmmK7i1AxXeiTtQgQZhQNiXYU84ULeaYF1EH15n  944          62816        Chorus One                    
+20     BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH  860          54209        Unknown                       
+21     EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f  856          48670        Unknown                       
+23     9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7  820          48666        Coinbase 03                   
+24     J6etcxDdYjPHrtyvDXrbCkx3q9W1UjMj1vy1jBFPJEbK  812          56014        Unknown                       
+25     DWvDTSh3qfn88UoQTEKRV2JnLt5jtJAVoiCo3ivtMwXP  800          45198        P2P.org                       
+26     5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC  799          44772        Unknown                       
+27     A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4  792          44325        Unknown                       
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+Total validators checked: 27
+Jito-solana validators found: 20
+Missing JSON files: 0
