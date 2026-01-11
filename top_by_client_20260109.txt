@@ -35,3 +35,8 @@ Rank  Validator ID                                      Slots     Events
 8     7tqeaFKsg2K9xKnQWe61w71AtCZVMQvG4hbFAiFAngYw          -          -
 9     9r2CsyjRTmTRtu8GFk5oJRSQr5YfSENxDkf3eox8iPLa          -          -
 10    8Nvaxzif1NrdvxNkRetjT8xJvd33EHkKVrfL8EDkgaNy          -          -
+11    oPaLtitM6cwpFVzP2rDhLsJLdY2vcbuZiJJyD1TFUKs           -          -    
+12    nymsHergYedT9CJMgtGMvqXUTGcbs5o3MiWTJUbqTGY     
+13    bonkcbAQvHpYWxEG63E8ufTB1cxkkk9eAKaPdGePE88   
+14    mrgn28BhocwdAUEenen3Sw2MR9cPKDpLkDvzDdR7DBD
+15    ciTyjzN9iyobidMycjyqRRM7vXAHXkFzH3m8vEr6cQj

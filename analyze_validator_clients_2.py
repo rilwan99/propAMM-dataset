@@ -127,6 +127,11 @@ def calculate_metrics(df, validator_counts):
     efficiency_distribution = events_per_slot.reset_index(name='events')
     metrics['efficiency_distribution'] = efficiency_distribution
 
+    # Scatter plot data (raw events per slot by slot number)
+    scatter_data = events_per_slot.reset_index()
+    scatter_data.columns = ['client_type', 'slot', 'events']
+    metrics['scatter_data'] = scatter_data
+
     # Events per slot over time (5-minute bins) - normalized time series
     time_efficiency = df.groupby(['time_bin_5min', 'client_type', 'slot']).size()
     time_efficiency_avg = time_efficiency.groupby(['time_bin_5min', 'client_type']).mean().unstack()
@@ -147,10 +152,56 @@ def calculate_metrics(df, validator_counts):
     metrics['total_blocks'] = df.groupby('client_type')['slot'].nunique()
     metrics['total_events'] = df.groupby('client_type').size()
 
+    # SPIKE WINDOW ANALYSIS: Prepare data for Panel 4
+    # Define spike window constants
+    SPIKE_START = pd.Timestamp('2026-01-07 16:20:00')
+    SPIKE_END = pd.Timestamp('2026-01-07 16:24:59')
+    SPIKE_CONTEXT_START = pd.Timestamp('2026-01-07 16:00:00')
+    SPIKE_CONTEXT_END = pd.Timestamp('2026-01-07 16:40:00')
+    PEAK_SLOTS = [391948792, 391948795]
+
+    # Filter to context window (40 minutes around spike)
+    df_context = df[
+        (df['datetime'] >= SPIKE_CONTEXT_START) &
+        (df['datetime'] < SPIKE_CONTEXT_END)
+    ].copy()
+
+    # Calculate events per slot in context window
+    context_scatter = df_context.groupby(['client_type', 'slot']).size().reset_index()
+    context_scatter.columns = ['client_type', 'slot', 'events']
+
+    # Mark which slots are in spike window
+    df_context['in_spike_window'] = (
+        (df_context['datetime'] >= SPIKE_START) &
+        (df_context['datetime'] < SPIKE_END)
+    )
+
+    # Calculate spike window metrics
+    spike_window_metrics = {}
+    for client_type in ['Jito-solana', 'Harmonic']:
+        df_client_spike = df_context[
+            (df_context['client_type'] == client_type) &
+            (df_context['in_spike_window'] == True)
+        ]
+
+        if len(df_client_spike) > 0:
+            events_by_slot = df_client_spike.groupby('slot').size()
+            spike_window_metrics[client_type] = {
+                'avg': events_by_slot.mean(),
+                'total_events': len(df_client_spike),
+                'blocks': df_client_spike['slot'].nunique()
+            }
+
+    # Store in metrics dict
+    metrics['spike_context_scatter'] = context_scatter
+    metrics['spike_window_metrics'] = spike_window_metrics
+    metrics['spike_peak_slots'] = PEAK_SLOTS
+
     print("  ✓ Block packing efficiency calculated (events per slot)")
     print("  ✓ Performance consistency metrics computed")
     print("  ✓ Time-based efficiency patterns analyzed")
-    print("  ✓ Event type efficiency breakdown completed\n")
+    print("  ✓ Event type efficiency breakdown completed")
+    print("  ✓ Spike window analysis data prepared\n")
 
     return metrics
 
@@ -169,30 +220,114 @@ def create_visualization(metrics):
 
     # Color scheme
     colors = {
-        'Jito-solana': '#457B9D',  # Blue
-        'Harmonic': '#52B788'       # Green
+        'Jito-solana': "#009DFF",  # Blue
+        'Harmonic': "#227B52"       # Green
     }
 
     # Create subplot layout
     fig = make_subplots(
-        rows=3, cols=2,
+        rows=4, cols=1,
         specs=[
-            [{"type": "scatter", "colspan": 2}, None],
-            [{"type": "bar"}, {"type": "box"}],
-            [{"type": "bar", "colspan": 2}, None]
+            [{"type": "scatter"}],
+            [{"type": "box"}],
+            [{"type": "scatter"}],
+            [{"type": "scatter"}]  # New spike analysis panel
         ],
         subplot_titles=(
-            "Block Packing Efficiency Over Time (Events per Slot)",
-            "Performance Comparison (Events per Slot)",
-            "Efficiency Distribution (Events per Slot)",
-            "Block Packing by Event Type (ORACLE vs TRADE)"
+            "Raw Data: Block Packing Efficiency by Slot (All Data Points)",
+            "Statistical Comparison: Events per Slot with Key Percentiles",
+            "Time Series: Average Events per Slot (5-minute bins)",
+            "Spike Analysis: 16:20-16:24 Window (Harmonic 169.25 vs Jito 65.69 avg)"
         ),
-        row_heights=[0.35, 0.35, 0.3],
-        vertical_spacing=0.12,
-        horizontal_spacing=0.15
+        row_heights=[0.25, 0.20, 0.25, 0.30],  # Give more space to spike panel
+        vertical_spacing=0.10
     )
 
-    # Panel 1: Events per slot over time (normalized time series)
+    # Panel 1: Raw events per slot scatter plot
+    scatter_data = metrics['scatter_data']
+    for client_type in ['Jito-solana', 'Harmonic']:
+        client_data = scatter_data[scatter_data['client_type'] == client_type]
+        fig.add_trace(
+            go.Scatter(
+                x=client_data['slot'],
+                y=client_data['events'],
+                name=client_type,
+                mode='markers',
+                marker=dict(
+                    size=4,
+                    color=colors[client_type],
+                    opacity=0.6
+                ),
+                hovertemplate='<b>%{fullData.name}</b><br>Slot: %{x}<br>Events: %{y}<extra></extra>'
+            ),
+            row=1, col=1
+        )
+
+    # Panel 2: Box plot with percentile annotations
+    for client_type in ['Jito-solana', 'Harmonic']:
+        client_data = scatter_data[scatter_data['client_type'] == client_type]
+
+        fig.add_trace(
+            go.Box(
+                y=client_data['events'],
+                name=client_type,
+                marker_color=colors[client_type],
+                boxmean='sd',  # Show mean line and standard deviation
+                boxpoints='outliers',  # Show outlier points
+                hovertemplate='<b>%{fullData.name}</b><br>Value: %{y}<extra></extra>'
+            ),
+            row=2, col=1
+        )
+
+    # Calculate and add text annotations with percentiles
+    annotations = []
+    for i, client_type in enumerate(['Jito-solana', 'Harmonic']):
+        client_data = scatter_data[scatter_data['client_type'] == client_type]['events']
+
+        # Calculate all key percentiles
+        p25 = client_data.quantile(0.25)
+        p50 = client_data.median()
+        p75 = client_data.quantile(0.75)
+        p95 = client_data.quantile(0.95)
+        p99 = client_data.quantile(0.99)
+        mean_val = client_data.mean()
+
+        # Create annotation text
+        annotation_text = (
+            f"<b>{client_type}</b><br>"
+            f"p99: {p99:.1f}<br>"
+            f"p95: {p95:.1f}<br>"
+            f"p75: {p75:.1f}<br>"
+            f"p50: {p50:.1f}<br>"
+            f"p25: {p25:.1f}<br>"
+            f"mean: {mean_val:.1f}"
+        )
+
+        # Position annotation to the right of each box
+        annotations.append(
+            dict(
+                x=i,  # 0 for Jito-solana, 1 for Harmonic
+                y=p99 + 10,  # Position above the p99 value
+                xref='x2',  # Reference to Panel 2's x-axis
+                yref='y2',  # Reference to Panel 2's y-axis
+                text=annotation_text,
+                showarrow=False,
+                font=dict(size=10, family='monospace'),
+                align='left',
+                xanchor='left',
+                bgcolor='rgba(255, 255, 255, 0.9)',
+                bordercolor=colors[client_type],
+                borderwidth=2,
+                borderpad=6
+            )
+        )
+
+    # Add annotations to figure layout
+    current_annotations = list(fig.layout.annotations) if fig.layout.annotations else []
+    current_annotations.extend(annotations)
+    fig.update_layout(annotations=current_annotations)
+
+    # Panel 3: Time series with 5-minute bins (shows spike clearly)
     time_efficiency = metrics['time_efficiency']
     for client_type in ['Jito-solana', 'Harmonic']:
         if client_type in time_efficiency.columns:
@@ -206,93 +341,176 @@ def create_visualization(metrics):
                     connectgaps=False,  # Show gaps where data is missing (NaN)
                     hovertemplate='<b>%{fullData.name}</b><br>Time: %{x}<br>Avg Events/Slot: %{y:.2f}<extra></extra>'
                 ),
-                row=1, col=1
-            )
-
-    # Panel 2: Block packing efficiency comparison
-    client_types = ['Jito-solana', 'Harmonic']
-    efficiency_stats = metrics['efficiency_stats']
-
-    # Mean efficiency
-    fig.add_trace(
-        go.Bar(
-            x=client_types,
-            y=[efficiency_stats.loc[ct, 'mean'] for ct in client_types],
-            name='Mean Events/Slot',
-            marker_color=[colors[ct] for ct in client_types],
-            hovertemplate='<b>%{x}</b><br>Mean Events/Slot: %{y:.2f}<extra></extra>',
-            showlegend=False
-        ),
-        row=2, col=1
-    )
-
-    # Add error bars for std
-    fig.update_traces(
-        error_y=dict(
-            type='data',
-            array=[efficiency_stats.loc[ct, 'std'] for ct in client_types],
-            visible=True
-        ),
-        row=2, col=1
-    )
-
-    # Panel 3: Box Plot - Efficiency Distribution
-    for client_type in client_types:
-        client_data = metrics['efficiency_distribution'][
-            metrics['efficiency_distribution']['client_type'] == client_type
-        ]
-        fig.add_trace(
-            go.Box(
-                y=client_data['events'],
-                name=client_type,
-                marker_color=colors[client_type],
-                hovertemplate='<b>%{fullData.name}</b><br>Events/Slot: %{y}<extra></extra>'
-            ),
-            row=2, col=2
-        )
-
-    # Panel 4: Events per slot by event type (ORACLE vs TRADE efficiency)
-    efficiency_by_type = metrics['efficiency_by_type']
-
-    # Create grouped bars for ORACLE and TRADE
-    for event_type in ['ORACLE', 'TRADE']:
-        if event_type in efficiency_by_type.columns:
-            fig.add_trace(
-                go.Bar(
-                    x=client_types,
-                    y=[efficiency_by_type.loc[ct, event_type] if ct in efficiency_by_type.index else 0
-                       for ct in client_types],
-                    name=f'{event_type} Events/Slot',
-                    hovertemplate=f'<b>{event_type}</b><br>%{{x}}: %{{y:.2f}} events/slot<extra></extra>'
-                ),
                 row=3, col=1
             )
 
-    # Update layout
-    fig.update_xaxes(
-        title_text="Time (5-min bins)",
-        dtick=3600000,  # Tick every hour (in milliseconds)
-        tickformat="%H:%M<br>%b %d",  # Format: HH:MM with date on second line
-        row=1, col=1
-    )
-    fig.update_yaxes(title_text="Avg Events per Slot", row=1, col=1)
+    # Panel 4: Spike window analysis with highlighted peaks
+    context_scatter = metrics['spike_context_scatter']
+    spike_metrics = metrics['spike_window_metrics']
+    peak_slots = metrics['spike_peak_slots']
 
+    # Plot regular Jito-solana points
+    jito_context = context_scatter[context_scatter['client_type'] == 'Jito-solana']
+    fig.add_trace(
+        go.Scatter(
+            x=jito_context['slot'],
+            y=jito_context['events'],
+            name='Jito-solana',
+            mode='markers',
+            marker=dict(size=4, color=colors['Jito-solana']),
+            hovertemplate='<b>Jito-solana</b><br>Slot: %{x}<br>Events: %{y}<extra></extra>',
+            showlegend=False
+        ),
+        row=4, col=1
+    )
+
+    # Plot regular Harmonic points (non-peak)
+    harmonic_context = context_scatter[context_scatter['client_type'] == 'Harmonic']
+    harmonic_regular = harmonic_context[~harmonic_context['slot'].isin(peak_slots)]
+    fig.add_trace(
+        go.Scatter(
+            x=harmonic_regular['slot'],
+            y=harmonic_regular['events'],
+            name='Harmonic',
+            mode='markers',
+            marker=dict(size=4, color=colors['Harmonic']),
+            hovertemplate='<b>Harmonic</b><br>Slot: %{x}<br>Events: %{y}<extra></extra>',
+            showlegend=False
+        ),
+        row=4, col=1
+    )
+
+    # Highlight peak slots with special markers
+    harmonic_peaks = harmonic_context[harmonic_context['slot'].isin(peak_slots)]
+    fig.add_trace(
+        go.Scatter(
+            x=harmonic_peaks['slot'],
+            y=harmonic_peaks['events'],
+            name='Peak Slots',
+            mode='markers+text',
+            marker=dict(
+                size=4,
+                color=colors['Harmonic'],
+            ),
+            text=[f"{int(row['events'])}" for _, row in harmonic_peaks.iterrows()],
+            textposition='top center',
+            textfont=dict(size=10, color='#8B0000', family='monospace'),
+            hovertemplate='<b>PEAK SLOT</b><br>Slot: %{x}<br>Events: %{y}<extra></extra>'
+        ),
+        row=4, col=1
+    )
+
+    # Add horizontal baseline reference lines
+    fig.add_hline(
+        y=54.37, line_dash="dash", line_color=colors['Harmonic'],
+        line_width=1.5, opacity=0.5,
+        annotation_text="Harmonic baseline: 54.37",
+        annotation_position="right",
+        row=4, col=1
+    )
+    fig.add_hline(
+        y=57.26, line_dash="dash", line_color=colors['Jito-solana'],
+        line_width=1.5, opacity=0.5,
+        annotation_text="Jito baseline: 57.26",
+        annotation_position="right",
+        row=4, col=1
+    )
+
+    # Add shaded region for spike window (16:20-16:24)
+    # Note: Need to convert timestamps to slot numbers for shading
+    spike_start_slot = 391948700  # Approximate slot at 16:20
+    spike_end_slot = 391948800    # Approximate slot at 16:24
+
+    fig.add_vrect(
+        x0=spike_start_slot, x1=spike_end_slot,
+        fillcolor="rgba(255, 0, 0, 0.1)",  # Light red shading
+        layer="below", line_width=0,
+        annotation_text="Spike Window",
+        annotation_position="top left",
+        row=4, col=1
+    )
+
+    # Add spike window statistics annotations
+    spike_annotations = []
+
+    # Harmonic spike annotation
+    if 'Harmonic' in spike_metrics:
+        harmonic_spike_text = (
+            f"<b>Harmonic Spike</b><br>"
+            f"Avg: {spike_metrics['Harmonic']['avg']:.1f}<br>"
+            f"Blocks: {spike_metrics['Harmonic']['blocks']}<br>"
+            f"vs baseline: +{(spike_metrics['Harmonic']['avg'] - 54.37) / 54.37 * 100:.0f}%"
+        )
+
+        spike_annotations.append(
+            dict(
+                x=0.25, y=0.95,
+                xref='x4 domain', yref='y4 domain',  # Reference to Panel 4
+                text=harmonic_spike_text,
+                showarrow=False,
+                font=dict(size=10, family='monospace'),
+                align='left',
+                bgcolor='rgba(34, 123, 82, 0.9)',  # Harmonic green
+                bordercolor='#227B52',
+                borderwidth=2,
+                borderpad=6
+            )
+        )
+
+    # Jito spike annotation
+    if 'Jito-solana' in spike_metrics:
+        jito_spike_text = (
+            f"<b>Jito-solana Spike</b><br>"
+            f"Avg: {spike_metrics['Jito-solana']['avg']:.1f}<br>"
+            f"Blocks: {spike_metrics['Jito-solana']['blocks']}<br>"
+            f"vs baseline: +{(spike_metrics['Jito-solana']['avg'] - 57.26) / 57.26 * 100:.0f}%"
+        )
+
+        spike_annotations.append(
+            dict(
+                x=0.75, y=0.95,
+                xref='x4 domain', yref='y4 domain',
+                text=jito_spike_text,
+                showarrow=False,
+                font=dict(size=10, family='monospace'),
+                align='left',
+                bgcolor='rgba(0, 157, 255, 0.9)',  # Jito blue
+                bordercolor='#009DFF',
+                borderwidth=2,
+                borderpad=6
+            )
+        )
+
+    # Add to existing annotations
+    current_annotations_with_spike = list(fig.layout.annotations) if fig.layout.annotations else []
+    current_annotations_with_spike.extend(spike_annotations)
+    fig.update_layout(annotations=current_annotations_with_spike)
+
+    # Update layout
+    # Panel 1 axes
+    fig.update_xaxes(title_text="Slot Number", row=1, col=1)
+    fig.update_yaxes(title_text="Events per Slot", row=1, col=1)
+
+    # Panel 2 axes
     fig.update_xaxes(title_text="Client Type", row=2, col=1)
     fig.update_yaxes(title_text="Events per Slot", row=2, col=1)
 
-    fig.update_xaxes(title_text="Client Type", row=2, col=2)
-    fig.update_yaxes(title_text="Events per Slot", row=2, col=2)
-
-    fig.update_xaxes(title_text="Client Type", row=3, col=1)
-    fig.update_yaxes(title_text="Events per Slot", row=3, col=1)
+    # Panel 3 axes
+    fig.update_xaxes(
+        title_text="Time (5-min bins)",
+        tickformat="%H:%M<br>%b %d",  # Format: HH:MM with date on second line
+        row=3, col=1
+    )
+    fig.update_yaxes(title_text="Avg Events per Slot", row=3, col=1)
 
     # Overall layout
     fig.update_layout(
-        height=1200,
+        height=1400,  # Increased for 3 panels
         showlegend=True,
-        title_text="<b>Validator Client Performance: Block Packing Efficiency (Jito-solana vs Harmonic)</b>",
+        title_text="<b>Validator Client Performance: Jito-solana vs Harmonic</b><br>" +
+                   "<sub>Panel 1: Raw data | Panel 2: Statistical comparison | Panel 3: Time series (spike visible)</sub>",
         title_font_size=18,
-        barmode='group',
+        barmode='overlay',
         hovermode='closest'
     )
 
@@ -412,9 +630,6 @@ def main():
 
     # Step 4: Create visualization
     output_path = create_visualization(metrics)
-
-    # Step 5: Print summary
-    print_summary(metrics)
 
     print(f"\n{'='*80}")
     print(f"Analysis complete! Dashboard saved to: {output_path}")
